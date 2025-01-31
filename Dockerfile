@@ -9,9 +9,12 @@ COPY --chown=1001:0 /src/main/liberty/config /config
 
 # RUN features.sh
 
+# RUN unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY && \
+#     featureUtility installServerFeatures --acceptLicense defaultServer --noCache && \
+#     unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY && \
+#     features.sh
+
 RUN unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY && \
-    featureUtility installServerFeatures --acceptLicense defaultServer --noCache && \
-    unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY && \
     features.sh
 
 COPY --chown=1001:0 target/*.war /config/apps
