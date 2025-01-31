@@ -8,8 +8,8 @@ ENV http_proxy "http://proxy.example.com:8080"
 ENV https_proxy "http://proxy.example.com:8080"
 ENV no_proxy "localhost,127.0.0.1,repo1.maven.org"
 
-
-RUN features.sh --no-proxy
+RUN features.sh
+# RUN features.sh --no-proxy
 
 COPY --chown=1001:0 target/*.war /config/apps
 
